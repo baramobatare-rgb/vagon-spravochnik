@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Структурированный технический справочник по РД 32 ЦВ 169-2017 — руководству по деповскому ремонту грузовых вагонов">
+<title>Справочник по ремонту и обслуживанию вагонов</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="manifest" href="assets/manifest.webmanifest">
+<meta name="theme-color" content="#181d24">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="plate">
+      <div class="plate-rivet tl"></div><div class="plate-rivet tr"></div>
+      <div class="plate-code">РД 32 ЦВ 169-2017</div>
+      <div class="plate-title">RailDocs</div>
+      <div class="plate-sub">Технический справочник</div>
+    </div>
+
+    <div class="side-search">
+      <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.7.7l.27.28v.79l5 4.99L20.49 19zm-6 0A4.5 4.5 0 1 1 14 9.5 4.5 4.5 0 0 1 9.5 14"/></svg>
+      <input id="sideSearch" placeholder="Поиск по справочнику…">
+    </div>
+
+    <nav id="sectionNav"></nav>
+
+    
+  </aside>
+
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+  <!-- ===== MAIN ===== -->
+  <main class="main">
+    <header class="topbar">
+      <button id="tocBtn" class="mobile-btn" aria-label="Меню">
+        <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      </button>
+      <div class="crumbs" id="crumbs"><span>Документы</span><i>/</i><strong>РД 32 ЦВ 169-2017</strong></div>
+      <div class="actions">
+        <button id="fontMinus" class="icon-btn" title="Уменьшить текст">A−</button>
+        <button id="fontPlus" class="icon-btn" title="Увеличить текст">A+</button>
+        <button id="themeBtn" class="icon-btn" title="Светлая / тёмная тема">
+          <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M12 18a6 6 0 1 1 0-12zm0 2a8 8 0 1 0 0-16 8 8 0 0 0 0 16"/></svg>
+        </button>
+        <button id="helpBtn" class="icon-btn" title="Горячие клавиши (?)">
+          <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20m1 15h-2v-2h2zm2.07-7.75-.9.92C13.45 10.9 13 11.5 13 13h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41a2 2 0 0 0-4 0H8a4 4 0 0 1 8 0c0 .8-.32 1.53-.93 2.25"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="progress-bar" id="progressBar"><div id="progressFill"></div></div>
+
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="eyebrow">Нормативные документы · грузовые вагоны</div>
+        <h1>Справочник по ремонту и обслуживанию вагонов</h1>
+        <p>РД 32 ЦВ 169-2017 (деповской ремонт) и Инструкция по техническому обслуживанию вагонов в эксплуатации: полный текст, поиск и памятка осмотрщика.</p>
+        <div class="meta" id="heroMeta"></div>
+      </div>
+    </section>
+
+    <section class="toolbar">
+      <div class="global-search">
+        <svg viewBox="0 0 24 24" width="17" height="17"><path fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.7.7l.27.28v.79l5 4.99L20.49 19zm-6 0A4.5 4.5 0 1 1 14 9.5 4.5 4.5 0 0 1 9.5 14"/></svg>
+        <input id="search" placeholder="Поиск по всему справочнику: узел, размер, ГОСТ, пункт…" autocomplete="off">
+        <kbd>Ctrl K</kbd>
+      </div>
+      <select id="searchScope" class="scope-select" title="Область поиска">
+        <option value="all">Везде</option>
+        <option value="text">Текст РД</option>
+        <option value="pamyatka">Памятка осмотрщика</option>
+        <option value="instr">Инструкция по ТО вагонов</option>
+        <option value="notes">Мои заметки</option>
+      </select>
+      <button id="resetBtn" class="ghost-btn">Сбросить</button>
+    </section>
+
+    <section id="results" class="results hidden"></section>
+    <section id="content" class="content"></section>
+  </main>
+</div>
+
+<button id="toTopBtn" class="to-top hidden" title="Наверх">
+  <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M12 5.83 5.41 12.41 4 11l8-8 8 8-1.41 1.41L12 5.83zM4 18h16v2H4z"/></svg>
+</button>
+
+<!-- ===== TOAST (уведомления: сохранено, скопировано и т.п.) ===== -->
+<div class="toast" id="toast"></div>
+
+<div class="pdf-overlay hidden" id="helpOverlay">
+  <div class="help-modal">
+    <div class="pdf-head">
+      <div class="pdf-head-title"><b>Горячие клавиши и подсказки</b></div>
+      <div class="pdf-head-actions"><button id="closeHelp" class="icon-btn" title="Закрыть (Esc)">
+        <svg viewBox="0 0 24 24" width="15" height="15"><path fill="currentColor" d="M6.4 4.98 12 10.59l5.6-5.61L19.02 6.4 13.41 12l5.61 5.6-1.42 1.42L12 13.41l-5.6 5.61-1.42-1.42L10.59 12 4.98 6.4z"/></svg>
+      </button></div>
+    </div>
+    <div class="help-body">
+      <dl class="hotkey-list">
+        <dt><kbd>Ctrl</kbd>+<kbd>K</kbd></dt><dd>Перейти в строку поиска</dd>
+        <dt><kbd>←</kbd> / <kbd>→</kbd></dt><dd>Предыдущий / следующий раздел документа</dd>
+        <dt><kbd>Esc</kbd></dt><dd>Закрыть окно справки или очистить поиск</dd>
+        <dt><kbd>?</kbd></dt><dd>Открыть это окно</dd>
+      </dl>
+      <p class="help-note">Закладки и заметки хранятся локально в этом браузере (localStorage) и никуда не отправляются. Если вы очистите данные браузера или перейдёте на другое устройство — сделайте резервную копию через «Избранное → Экспорт» или «Мои заметки → Экспорт».</p>
+    </div>
+  </div>
+</div>
+
+<script src="assets/data.js"></script>
+<script src="assets/instr_data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
