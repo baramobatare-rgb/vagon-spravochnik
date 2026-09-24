@@ -541,3 +541,15 @@ body.light .pdf-body{background:#8a8d90}
 .vu-row:not(:first-child) label>span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 .vu-row:not(:first-child){align-items:center}
 @media (max-width:560px){.vu-row:not(:first-child) label>span{position:static;width:auto;height:auto;clip:auto}}
+
+/* v12: памятка осмотрщика (строки «параметр | значение») */
+.pam-jump{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 4px}
+.pam-jump button{border:1px solid var(--line);background:var(--bg-1);color:var(--ink);border-radius:999px;padding:7px 14px;font-size:13px;cursor:pointer}.pam-jump button:hover{border-color:var(--accent)}
+.pamyatka-category{max-width:none;padding:0;margin:0 0 22px;scroll-margin-top:70px}
+.pam-sub{margin:16px 0 0;font-size:14px;font-weight:600;color:var(--ink);padding-left:10px;border-left:3px solid var(--accent)}
+.pam-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(96px,auto);gap:14px;align-items:center;border:1px solid var(--line);background:var(--bg-1);border-radius:var(--radius);padding:10px 13px}
+.pam-row p{margin:0;font-size:13.5px;line-height:1.5;overflow-wrap:anywhere}
+.pam-row b{font-size:13.5px;text-align:right;padding-left:14px;border-left:1px solid var(--line);align-self:stretch;display:flex;align-items:center;justify-content:flex-end;overflow-wrap:anywhere}
+.pam-note{grid-column:1/-1;border:1px dashed var(--line);border-radius:var(--radius);padding:10px 13px;font-size:13px;line-height:1.5;color:var(--ink-dim);overflow-wrap:anywhere}.pam-note.strong{font-weight:600;color:var(--ink)}
+@media (max-width:560px){.pam-row{grid-template-columns:1fr}.pam-row b{border-left:0;padding-left:0;justify-content:flex-start;border-top:1px solid var(--line);padding-top:6px}}
+@media (max-width:640px){.toolbar{padding-left:16px;padding-right:16px}.toolbar>*{min-width:0}.toolbar select{flex:1 1 0}.toolbar .ghost-btn{flex:0 0 auto}}

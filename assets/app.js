@@ -96,11 +96,18 @@ function renderOverview() {
       Array.from({ length: g.range[1] - g.range[0] }, (_, k) => { const i = g.range[0] + k; return `<button class="section-index" onclick="showInstr(${i})"><span>${esc(I.sections[i].num || '•')}</span><div><b>${esc(I.sections[i].title)}</b></div><i>→</i></button>`; }).join('') + `</div>`).join('') +
     `<div class="notice"><p><b>Поиск:</b> введите запрос в строке сверху (Ctrl+K), он работает по Инструкции и памятке. Данные извлечены из документов автоматически — для ответственных решений сверяйтесь с оригиналами.</p></div>`;
 }
+function pamGroups(items) {
+  const groups = []; let g = { h: '', rows: [] };
+  items.forEach(x => { if (x.t === 'h') { if (g.h || g.rows.length) groups.push(g); g = { h: x.a, rows: [] }; } else g.rows.push(x); });
+  if (g.h || g.rows.length) groups.push(g); return groups;
+}
 function renderPamyatka() {
-  const total = P.lines.length;
-  content.innerHTML = viewTitle('ДОПОЛНИТЕЛЬНЫЙ ИСТОЧНИК', 'Памятка осмотрщику грузовых вагонов', `Краткие нормы, разложенные по рабочим категориям. Всего ${total} фрагментов.`) +
-    `<div class="notice source-note"><b>Дополнительный источник</b><p>Памятка не заменяет Инструкцию по ТО вагонов в эксплуатации. Для проверки формулировок сверяйтесь с оригиналом памятки.</p></div>` +
-    P.categories.map(c => `<section class="pamyatka-category"><div class="category-head"><div><b>${esc(c.category)}</b><small>${c.items.length} фрагментов</small></div></div><div class="pamyatka-items">${c.items.map(x => `<button type="button"><span>${x.n}</span><p>${esc(x.text)}</p></button>`).join('')}</div></section>`).join('');
+  const total = P.columns.reduce((n, c) => n + c.items.length, 0);
+  content.innerHTML = viewTitle('ДОПОЛНИТЕЛЬНЫЙ ИСТОЧНИК', P.title, `Краткие нормы по узлам вагона. Каждый параметр и его значение показаны в отдельных колонках. Всего ${total} строк.`) +
+    `<div class="pam-jump">${P.columns.map((c, i) => `<button onclick="document.getElementById('pam-c${i}').scrollIntoView({behavior:'smooth',block:'start'})">${esc(c.name)}</button>`).join('')}</div>` +
+    `<div class="notice source-note"><p>Памятка не заменяет Инструкцию по ТО вагонов в эксплуатации. ${esc(P.source)}</p></div>` +
+    P.columns.map((c, i) => `<section class="pamyatka-category" id="pam-c${i}"><div class="category-head"><div><b>${esc(c.name)}</b><small>${c.items.length} строк</small></div></div>` +
+      pamGroups(c.items).map(g => (g.h ? `<h4 class="pam-sub">${esc(g.h)}</h4>` : '') + `<div class="pamyatka-items">${g.rows.map(x => x.t === 'r' ? `<div class="pam-row"><p>${esc(x.a)}</p><b>${esc(x.b)}</b></div>` : `<div class="pam-note ${x.s ? 'strong' : ''}">${esc(x.a)}</div>`).join('')}</div>`).join('') + `</section>`).join('');
 }
 
 /* ---------------- поиск ---------------- */
@@ -108,13 +115,13 @@ function allSearch(q) {
   q = q.trim(); const scope = searchScope.value, low = q.toLowerCase(), hits = [];
   if (!q) { showView(currentView === 'instr' ? 'overview' : currentView); return; }
   if (scope === 'all' || scope === 'instr') I.sections.forEach((s, i) => { const [a, b] = iRange(i); for (let j = a; j < b && hits.length < 200; j++) if (ilines[j].toLowerCase().includes(low)) hits.push({ ii: i, j: j - a, line: ilines[j].trim() }); });
-  if (scope === 'all' || scope === 'pamyatka') P.categories.forEach(c => c.items.forEach(x => { if (hits.length < 200 && x.text.toLowerCase().includes(low)) hits.push({ pam: true, line: c.category + ' · ' + x.text }); }));
+  if (scope === 'all' || scope === 'pamyatka') P.columns.forEach((c, ci) => c.items.forEach(x => { const t = x.t === 'r' ? x.a + ' — ' + x.b : x.a; if (hits.length < 200 && t.toLowerCase().includes(low)) hits.push({ pam: true, col: ci, line: c.name + ' · ' + t }); }));
   setCrumbs('Справочник', 'Поиск', `«${q}»`);
   results.innerHTML = `<div class="search-head"><div><div class="eyebrow">ПОИСК</div><h2>Результаты по «${esc(q)}»</h2></div><span>${hits.length}${hits.length >= 200 ? '+' : ''}</span></div>` +
-    (hits.length ? hits.map(h => `<button class="result" ${h.pam ? 'data-pam="1"' : `data-ii="${h.ii}"`}><div><b>${h.pam ? 'ПАМЯТКА ОСМОТРЩИКА' : esc(iLabel(h.ii))}</b><small>${h.pam ? 'дополнительный источник' : 'строка ' + (h.j + 1)}</small></div><p>${mark(h.line, q)}</p></button>`).join('') : '<div class="empty-result">Ничего не найдено</div>');
+    (hits.length ? hits.map(h => `<button class="result" ${h.pam ? `data-pam="1" data-col="${h.col}"` : `data-ii="${h.ii}"`}><div><b>${h.pam ? 'ПАМЯТКА ОСМОТРЩИКА' : esc(iLabel(h.ii))}</b><small>${h.pam ? 'дополнительный источник' : 'строка ' + (h.j + 1)}</small></div><p>${mark(h.line, q)}</p></button>`).join('') : '<div class="empty-result">Ничего не найдено</div>');
   results.classList.remove('hidden'); content.classList.add('hidden');
 }
-results.addEventListener('click', e => { const b = e.target.closest('.result'); if (!b) return; if (b.dataset.pam) showView('pamyatka'); else showInstr(+b.dataset.ii); });
+results.addEventListener('click', e => { const b = e.target.closest('.result'); if (!b) return; if (b.dataset.pam) { showView('pamyatka'); const col = +b.dataset.col; setTimeout(() => document.getElementById('pam-c' + col)?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 350); } else showInstr(+b.dataset.ii); });
 
 /* ---------------- ссылки (#/instr/N, #/view/имя) ---------------- */
 function setHash(h) { try { history.replaceState(null, '', '#/' + h); } catch (e) { /* ignore */ } }

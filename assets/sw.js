@@ -1,7 +1,7 @@
 /* Service worker: офлайн-доступ к справочнику справочника осмотрщика вагонов.
    Стратегия: cache-first для файлов сайта, чтобы после первого визита
    справочник и PDF открывались даже без подключения к сети. */
-const CACHE_NAME = 'vagon-spravochnik-v11';
+const CACHE_NAME = 'vagon-spravochnik-v13';
 const CORE_FILES = [
   './',
   'index.html',
