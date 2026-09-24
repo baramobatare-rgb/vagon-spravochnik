@@ -1,7 +1,7 @@
 /* Service worker: офлайн-доступ к справочнику справочника осмотрщика вагонов.
    Стратегия: cache-first для файлов сайта, чтобы после первого визита
    справочник и PDF открывались даже без подключения к сети. */
-const CACHE_NAME = 'vagon-spravochnik-v13';
+const CACHE_NAME = 'vagon-spravochnik-v14';
 const CORE_FILES = [
   './',
   'index.html',
@@ -11,7 +11,10 @@ const CORE_FILES = [
   'assets/instr_data.js',
   'assets/vu45.js',
   'assets/manifest.webmanifest',
-  'assets/icon.svg'
+  'assets/icon.svg',
+  'assets/apple-touch-icon.png',
+  'assets/icon-192.png',
+  'assets/icon-512.png'
 ];
 
 self.addEventListener('install', event => {
