@@ -3,11 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Структурированный технический справочник по РД 32 ЦВ 169-2017 — руководству по деповскому ремонту грузовых вагонов">
-<title>Справочник по ремонту и обслуживанию вагонов</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<meta name="description" content="Справочник осмотрщика вагонов: инструкция по ТО вагонов в эксплуатации, памятка, калькулятор справки ВУ-45">
+<title>Справочник осмотрщика вагонов</title>
 <link rel="stylesheet" href="assets/styles.css">
 <link rel="manifest" href="assets/manifest.webmanifest">
 <meta name="theme-color" content="#181d24">
@@ -21,7 +18,7 @@
   <aside class="sidebar" id="sidebar">
     <div class="plate">
       <div class="plate-rivet tl"></div><div class="plate-rivet tr"></div>
-      <div class="plate-code">РД 32 ЦВ 169-2017</div>
+      <div class="plate-code">ИНСТРУКЦИЯ ОСМОТРЩИКУ</div>
       <div class="plate-title">RailDocs</div>
       <div class="plate-sub">Технический справочник</div>
     </div>
@@ -44,7 +41,7 @@
       <button id="tocBtn" class="mobile-btn" aria-label="Меню">
         <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
       </button>
-      <div class="crumbs" id="crumbs"><span>Документы</span><i>/</i><strong>РД 32 ЦВ 169-2017</strong></div>
+      <div class="crumbs" id="crumbs"><span>Справочник</span><i>/</i><strong>Главная</strong></div>
       <div class="actions">
         <button id="fontMinus" class="icon-btn" title="Уменьшить текст">A−</button>
         <button id="fontPlus" class="icon-btn" title="Увеличить текст">A+</button>
@@ -61,9 +58,9 @@
 
     <section class="hero">
       <div class="hero-inner">
-        <div class="eyebrow">Нормативные документы · грузовые вагоны</div>
-        <h1>Справочник по ремонту и обслуживанию вагонов</h1>
-        <p>РД 32 ЦВ 169-2017 (деповской ремонт) и Инструкция по техническому обслуживанию вагонов в эксплуатации: полный текст, поиск и памятка осмотрщика.</p>
+        <div class="eyebrow">Техническое обслуживание вагонов · грузовые и пассажирские</div>
+        <h1>Справочник осмотрщика вагонов</h1>
+        <p>Инструкция по техническому обслуживанию вагонов в эксплуатации, памятка осмотрщика и калькулятор справки ВУ-45.</p>
         <div class="meta" id="heroMeta"></div>
       </div>
     </section>
@@ -76,10 +73,8 @@
       </div>
       <select id="searchScope" class="scope-select" title="Область поиска">
         <option value="all">Везде</option>
-        <option value="text">Текст РД</option>
         <option value="pamyatka">Памятка осмотрщика</option>
         <option value="instr">Инструкция по ТО вагонов</option>
-        <option value="notes">Мои заметки</option>
       </select>
       <button id="resetBtn" class="ghost-btn">Сбросить</button>
     </section>
@@ -111,13 +106,14 @@
         <dt><kbd>Esc</kbd></dt><dd>Закрыть окно справки или очистить поиск</dd>
         <dt><kbd>?</kbd></dt><dd>Открыть это окно</dd>
       </dl>
-      <p class="help-note">Закладки и заметки хранятся локально в этом браузере (localStorage) и никуда не отправляются. Если вы очистите данные браузера или перейдёте на другое устройство — сделайте резервную копию через «Избранное → Экспорт» или «Мои заметки → Экспорт».</p>
+      <p class="help-note">Данные калькулятора ВУ-45 хранятся локально в этом браузере и никуда не отправляются.</p>
     </div>
   </div>
 </div>
 
 <script src="assets/data.js"></script>
 <script src="assets/instr_data.js"></script>
+<script src="assets/vu45.js"></script>
 <script src="assets/app.js"></script>
 </body>
 </html>

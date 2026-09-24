@@ -1,7 +1,7 @@
-/* Service worker: офлайн-доступ к справочнику РД 32 ЦВ 169-2017.
+/* Service worker: офлайн-доступ к справочнику справочника осмотрщика вагонов.
    Стратегия: cache-first для файлов сайта, чтобы после первого визита
    справочник и PDF открывались даже без подключения к сети. */
-const CACHE_NAME = 'rd-32-cv-169-2017-v7';
+const CACHE_NAME = 'vagon-spravochnik-v11';
 const CORE_FILES = [
   './',
   'index.html',
@@ -9,38 +9,9 @@ const CORE_FILES = [
   'assets/app.js',
   'assets/data.js',
   'assets/instr_data.js',
+  'assets/vu45.js',
   'assets/manifest.webmanifest',
-  'assets/icon.svg',
-  'assets/figures/page-10.jpg',
-  'assets/figures/page-11.jpg',
-  'assets/figures/page-12.jpg',
-  'assets/figures/page-13.jpg',
-  'assets/figures/page-14.jpg',
-  'assets/figures/page-22.jpg',
-  'assets/figures/page-23.jpg',
-  'assets/figures/page-25.jpg',
-  'assets/figures/page-27.jpg',
-  'assets/figures/page-28.jpg',
-  'assets/figures/page-31.jpg',
-  'assets/figures/page-33.jpg',
-  'assets/figures/page-35.jpg',
-  'assets/figures/page-36.jpg',
-  'assets/figures/page-37.jpg',
-  'assets/figures/page-38.jpg',
-  'assets/figures/page-39.jpg',
-  'assets/figures/page-40.jpg',
-  'assets/figures/page-41.jpg',
-  'assets/figures/page-42.jpg',
-  'assets/figures/page-43.jpg',
-  'assets/figures/page-44.jpg',
-  'assets/figures/page-52.jpg',
-  'assets/figures/page-53.jpg',
-  'assets/figures/page-56.jpg',
-  'assets/figures/page-68.jpg',
-  'assets/figures/page-69.jpg',
-  'assets/figures/page-70.jpg',
-  'assets/figures/page-71.jpg',
-  'assets/figures/page-9.jpg'
+  'assets/icon.svg'
 ];
 
 self.addEventListener('install', event => {

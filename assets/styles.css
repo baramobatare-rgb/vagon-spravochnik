@@ -1,5 +1,5 @@
 /* ============================================================
-   РД 32 ЦВ 169-2017 — технический справочник
+   Справочник осмотрщика вагонов
    Тема: приборная табличка / инженерный чертёж
    ============================================================ */
 
@@ -483,3 +483,61 @@ body.light .pdf-body{background:#8a8d90}
 .hero p,.hero .meta{display:none!important}
 .hero h1{font-size:clamp(24px,3vw,32px)!important;margin:4px 0!important}
 .hero-inner{padding-top:22px!important;padding-bottom:18px!important}
+
+/* v11: главная и калькулятор ВУ-45 */
+.dashboard-grid{max-width:none;padding:0;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}
+.dash-card{padding:18px 20px;min-height:118px}
+.dash-card>span{width:36px;height:36px;display:grid;place-items:center;border:1px solid var(--line);border-radius:9px;margin-bottom:12px;font-size:18px}
+.home-h{display:flex;align-items:baseline;gap:10px;margin:28px 0 10px;padding-bottom:8px;border-bottom:1px solid var(--line);font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-faint)}
+.home-h b{color:var(--ink);font-size:13px}
+.idx-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:8px}
+.idx-grid .section-index{margin:0;padding:11px 14px;gap:12px}.idx-grid .section-index>span{width:auto;min-width:30px}.idx-grid .section-index b{font-size:14px}
+.notice{max-width:none;padding:0;margin:24px 0 0}
+.vu-head{display:flex;justify-content:space-between;align-items:flex-end;gap:14px;flex-wrap:wrap;margin:6px 0 14px}
+.vu-head h2{font-family:var(--font-display);font-size:clamp(26px,3vw,34px);margin:4px 0}.vu-head p{margin:0;color:var(--ink-dim);font-size:14px}
+.vu-actions{display:flex;gap:8px;flex-wrap:wrap}
+.vu-steps{border:1px solid var(--line);background:var(--bg-1);border-radius:var(--radius);padding:11px 16px;margin-bottom:14px;font-size:14px}
+.vu-steps summary{cursor:pointer;font-weight:600}.vu-steps ol{margin:12px 0 2px;padding-left:20px;line-height:1.6;color:var(--ink-dim)}
+.vu-layout{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:16px;align-items:start}
+.vu-main{display:grid;gap:14px}
+.vu-card{border:1px solid var(--line);background:var(--bg-1);border-radius:var(--radius);padding:16px 18px}
+.vu-card h3{display:flex;align-items:center;gap:10px;margin:0 0 12px;font-size:15px;font-weight:600}
+.vu-card h3 i{width:22px;height:22px;display:grid;place-items:center;border-radius:50%;background:var(--accent);color:#fff;font-style:normal;font-size:12px}
+.vu-more summary{cursor:pointer;list-style:none}.vu-more summary h3{margin:0}.vu-more[open] summary h3{margin-bottom:12px}
+.vu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px 12px}.vu-grid2{grid-template-columns:repeat(2,minmax(0,1fr));margin-bottom:12px}
+.vu-field,.vu-row label{display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--ink-dim);min-width:0}
+.vu-field input,.vu-field select,.vu-row input{background:var(--bg-2);border:1px solid var(--line);color:var(--ink);padding:8px 10px;border-radius:var(--radius);font:inherit;font-size:14px;width:100%;box-sizing:border-box}
+.vu-field input:focus,.vu-field select:focus,.vu-row input:focus{outline:2px solid var(--accent);outline-offset:-1px}
+.vu-list{display:grid;gap:8px}
+.vu-row{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr) minmax(70px,.8fr) 34px;gap:10px;align-items:end}
+.vu-row output{padding:8px 4px;font-family:var(--font-mono);font-size:14px;color:var(--ink-dim);text-align:right}
+.vu-del{height:36px;border:1px solid var(--line);background:transparent;color:var(--ink-faint);border-radius:var(--radius);cursor:pointer;font-size:18px}.vu-del:hover{color:var(--rust);border-color:var(--rust)}
+.vu-addbar{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-top:12px}.vu-hint{font-size:12px;color:var(--ink-faint);margin-left:4px}
+.vu-chip{border:1px solid var(--line);background:var(--bg-2);color:var(--ink);border-radius:999px;padding:5px 11px;font-size:12px;cursor:pointer}.vu-chip:hover{border-color:var(--accent)}
+.vu-tot{margin-left:auto;font-size:13px}
+.vu-sticky{position:sticky;top:76px;border:1px solid var(--line);background:var(--bg-1);border-radius:var(--radius);padding:16px 18px}
+.vu-sticky h3{margin:0 0 12px;font-size:15px}
+.vu-kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.vu-kpis div{background:var(--bg-2);border:1px solid var(--line);padding:9px 11px;border-radius:var(--radius)}
+.vu-kpis span{display:block;font-size:11px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:.04em}.vu-kpis b{font-size:23px;font-family:var(--font-display);line-height:1.2}.vu-kpis small{display:block;font-size:11px;color:var(--ink-faint);min-height:14px}
+.vu-bar{height:6px;background:var(--bg-2);border-radius:99px;margin:12px 0 4px;overflow:hidden;border:1px solid var(--line)}.vu-bar i{display:block;height:100%;background:var(--rust)}.vu-bar i.ok{background:#3f9d6b}
+.vu-status{padding:9px 12px;border-radius:var(--radius);border:1px solid var(--line);background:var(--bg-2);margin-top:8px;font-size:13.5px;line-height:1.45}
+.vu-status.ok{border-color:#3f9d6b;background:rgba(63,157,107,.14)}.vu-status.bad{border-color:var(--rust);background:rgba(201,106,84,.15)}
+.vu-note{margin-top:16px;font-size:12.5px;line-height:1.55;color:var(--ink-faint);padding:12px 14px;border:1px dashed var(--line);border-radius:var(--radius)}.vu-note b{color:var(--ink-dim)}
+@media (max-width:1050px){.vu-layout{grid-template-columns:1fr}.vu-side{order:-1}.vu-sticky{position:static}}
+@media (max-width:560px){.vu-grid2{grid-template-columns:1fr}.vu-row{grid-template-columns:1fr 1fr 34px}.vu-row output{grid-column:1 / 3;text-align:left;padding:0}.vu-row .vu-del{grid-row:1;grid-column:3}}
+#vuPrintRoot{display:none}
+@media print{
+  body.print-vu .app,body.print-vu .to-top,body.print-vu .toast{display:none!important}
+  body.print-vu #vuPrintRoot{display:block!important;color:#000;background:#fff;font:14px/1.5 Arial,sans-serif}
+  body.print-vu{background:#fff!important}
+  .vu-sheet{border:2px solid #000;padding:16px;max-width:720px;margin:0 auto}.vu-sheet-h{display:flex;justify-content:space-between;gap:12px;font-size:13px}
+  .vu-sheet h2{text-align:center;margin:12px 0}.vu-sheet h2 small{font-size:13px;font-weight:400}
+  .vu-sheet table{width:100%;border-collapse:collapse;margin:10px 0}.vu-sheet th,.vu-sheet td{border:1px solid #000;padding:4px 8px;text-align:center}
+}
+.hero-inner{max-width:1120px!important;margin:0 auto!important;padding:22px 30px 18px!important}
+.dashboard-grid{margin-top:16px}
+.vu-head{margin-top:18px}
+.vu-row:not(:first-child) label>span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.vu-row:not(:first-child){align-items:center}
+@media (max-width:560px){.vu-row:not(:first-child) label>span{position:static;width:auto;height:auto;clip:auto}}

@@ -1,7 +1,7 @@
 {
-  "name": "РД 32 ЦВ 169-2017 — Технический справочник",
-  "short_name": "РД 32 ЦВ 169-2017",
-  "description": "Справочник по руководству о деповском ремонте грузовых вагонов",
+  "name": "Справочник осмотрщика вагонов",
+  "short_name": "Осмотрщик",
+  "description": "Инструкция по ТО вагонов, памятка осмотрщика, калькулятор справки ВУ-45",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
@@ -9,6 +9,11 @@
   "theme_color": "#181d24",
   "lang": "ru",
   "icons": [
-    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
   ]
 }
