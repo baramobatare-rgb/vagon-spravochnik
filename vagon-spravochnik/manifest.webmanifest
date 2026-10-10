@@ -1,0 +1,32 @@
+{
+  "name": "Справочник осмотрщика вагонов",
+  "short_name": "Осмотрщик",
+  "description": "Инструкция по ТО вагонов, памятка осмотрщика, калькулятор справки ВУ-45",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#12161b",
+  "theme_color": "#181d24",
+  "lang": "ru",
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "id": "./"
+}
